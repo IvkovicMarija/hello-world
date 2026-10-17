@@ -76,7 +76,7 @@ export const SCENES = {
     // Images live in public/brand/.
     avatar: "brand/marija-avatar.png",
     logoMark: "brand/advantage-mark.png", // the Advantage "A"
-    name: "Marija Ivkovic",
+    name: "Marija Ivković",
     tagline: "Meta creative that converts",
     linkedin: "linkedin.com/in/marija-ivkovic", // https://www.linkedin.com/in/marija-ivkovic
     source: "Source: Meta Creative Shop, Creative on Meta playbook",
