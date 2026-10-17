@@ -73,11 +73,12 @@ export const SCENES = {
   endCard: {
     start: 23,
     end: 25,
-    // Logo files live in public/brand/ (Advantage brand kit).
-    logoMark: "brand/advantage-mark.png",
-    logoWordmark: "brand/advantage-wordmark.png",
+    // Images live in public/brand/.
+    avatar: "brand/marija-avatar.png",
+    logoMark: "brand/advantage-mark.png", // the Advantage "A"
+    name: "Marija Ivkovic",
     tagline: "Meta creative that converts",
-    url: "hunchads.com",
+    linkedin: "linkedin.com/in/marija-ivkovic", // https://www.linkedin.com/in/marija-ivkovic
     source: "Source: Meta Creative Shop, Creative on Meta playbook",
   },
 } as const;
