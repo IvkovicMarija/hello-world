@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { drift } from "../anim";
-import { C } from "../brand";
+import { C, gradientAt } from "../brand";
 import { Words } from "../components";
 import { useLayout } from "../layout";
 import { FPS, SCENES } from "../timeline";
@@ -40,7 +40,7 @@ export const Hook: React.FC = () => {
       >
         <Words words={[...S.line1]} at={-0.1} stagger={STAGGER} size={size} slam />
         <Words
-          words={S.line2.map((w) => ({ t: w, color: w === "ad" || w === "set" || w === "is." ? C.accent : C.text }))}
+          words={S.line2.map((w, i) => ({ t: w, color: i === 0 ? C.text : gradientAt((i - 1) / 2) }))}
           at={LINE2_AT}
           stagger={STAGGER}
           size={size}

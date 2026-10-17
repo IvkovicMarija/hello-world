@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { drift, ease, mixColor, pop } from "../anim";
-import { C, FONT } from "../brand";
+import { C, FONT, gradientAt } from "../brand";
 import { Words } from "../components";
 import { useLayout } from "../layout";
 import { SCENES } from "../timeline";
@@ -80,7 +80,7 @@ export const Takeaway: React.FC = () => {
                     width: ch === "." ? tile * 0.35 : tile,
                     height: tile * 1.15,
                     borderRadius: tile * 0.16,
-                    background: ch === "." ? "transparent" : C.accent,
+                    background: ch === "." ? "transparent" : gradientAt(i / (letters.length - 2)),
                     color: C.text,
                     fontFamily: FONT,
                     fontWeight: 900,
@@ -90,7 +90,7 @@ export const Takeaway: React.FC = () => {
                     justifyContent: "center",
                     transform: `translate(${s.x * (1 - p)}px, ${s.y * (1 - p)}px) rotate(${s.r * (1 - p)}deg) scale(${0.4 + 0.6 * p})`,
                     opacity: Math.min(1, p * 2),
-                    boxShadow: p > 0.95 && ch !== "." ? `0 0 ${24 + 10 * Math.sin(frame / 4)}px ${C.accent}88` : undefined,
+                    boxShadow: p > 0.95 && ch !== "." ? `0 0 ${24 + 10 * Math.sin(frame / 4)}px ${gradientAt(i / (letters.length - 2))}88` : undefined,
                   }}
                 >
                   {ch}

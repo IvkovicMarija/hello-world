@@ -9,8 +9,8 @@ import { SCENES } from "../timeline";
 const S = SCENES.stat2;
 const NUMBER_AT = 1.7;
 const RATIOS = [1, 0.8, 9 / 16]; // width / height
-const FILLS = [C.text, C.accentSoft, C.accent];
-const INKS = [C.bg, C.bg, C.text];
+const FILLS = [C.teal, C.accent, C.purple];
+const INKS = [C.bg, C.text, C.text];
 const FROM = [
   { x: -700, y: 120, r: -18 },
   { x: 0, y: -700, r: 10 },

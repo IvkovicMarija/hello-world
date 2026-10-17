@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { drift, ease, mixColor, pop } from "../anim";
-import { C, FONT } from "../brand";
+import { C, FONT, GRADIENT, gradientText } from "../brand";
 import { Caption, CountUp, Words } from "../components";
 import { rectStyle, useLayout } from "../layout";
 import { SCENES } from "../timeline";
@@ -94,7 +94,8 @@ export const Stat3: React.FC = () => {
             width: (markX - v.x) * fill,
             height: "100%",
             borderRadius: 99,
-            background: C.accent,
+            backgroundImage: GRADIENT,
+            backgroundSize: `${v.w * 0.2}px 100%`,
             boxShadow: `0 0 ${50 * glow}px ${C.accent}`,
           }}
         />
@@ -107,7 +108,7 @@ export const Stat3: React.FC = () => {
           width: 6,
           height: barH + 36,
           borderRadius: 3,
-          background: C.highlight,
+          background: C.pink,
           opacity: pop(frame, 0.2),
         }}
       />
@@ -121,7 +122,7 @@ export const Stat3: React.FC = () => {
           fontFamily: FONT,
           fontWeight: 900,
           fontSize: 64,
-          color: C.highlight,
+          ...gradientText,
           opacity: pop(frame, 0.3),
           transform: `scale(${1 + 0.12 * glow})`,
         }}

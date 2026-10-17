@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { drift, ease, easeInOut, mix, mixColor, pop } from "../anim";
-import { C, FONT } from "../brand";
+import { C, FONT, gradientAt } from "../brand";
 import { AdCard, PersonIcon, Words } from "../components";
 import { phoneGeometry } from "../geometry";
 import { rectStyle, useLayout } from "../layout";
@@ -9,8 +9,8 @@ import { SCENES } from "../timeline";
 import { STACK_COUNT, stackGeometry } from "./Problem";
 
 const S = SCENES.idea;
-const FILLS = [C.accent, C.text, C.accentSoft, C.surface, C.accentSoft, C.accent, C.surface, C.text];
-const INKS = [C.text, C.bg, C.bg, C.accentSoft, C.bg, C.text, C.accentSoft, C.bg];
+const FILLS = [C.accent, C.teal, C.purple, C.pink, C.text, C.surface, C.teal, C.accent];
+const INKS = [C.text, C.bg, C.text, C.text, C.bg, C.accentSoft, C.bg, C.text];
 const MATCH = [2, 0, 3, 1, 1, 3, 0, 2]; // card -> person
 
 const EXPLODE = 0.25;
@@ -64,7 +64,7 @@ export const Idea: React.FC = () => {
           </div>
           <div style={{ position: "absolute", inset: 0, opacity: swap }}>
             <Words
-              words={S.line2.split(" ").map((t) => ({ t, color: t === "variety." ? C.accent : C.text }))}
+              words={S.line2.split(" ").map((t) => ({ t, color: t === "variety." ? C.pink : C.text }))}
               at={SWAP}
               stagger={0.1}
               size={Math.round(L.head * 1.15)}
@@ -86,7 +86,7 @@ export const Idea: React.FC = () => {
             <path
               key={i}
               d={`M${x1},${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`}
-              stroke={i % 2 ? C.accentSoft : C.accent}
+              stroke={gradientAt(i / 7)}
               strokeWidth={4}
               fill="none"
               strokeDasharray={len}
@@ -111,7 +111,7 @@ export const Idea: React.FC = () => {
               width: personSize,
               height: personSize,
               borderRadius: 99,
-              background: mixColor(C.surface, C.accent, lit * (j % 2 ? 0.6 : 1)),
+              background: mixColor(C.surface, gradientAt(j / 3), lit),
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

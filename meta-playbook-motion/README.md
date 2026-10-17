@@ -21,7 +21,7 @@ stat1: { start: 10, end: 14, setup: "...", value: 34.5, decimals: 1, caption: ".
 - **Change copy:** edit the strings. Keep each on-screen beat to about 8 words.
 - **Animation beats inside a scene** (when a number starts counting, etc.) are constants at the top of each `src/scenes/*.tsx` file, such as `NUMBER_AT`. They're in seconds from the start of that scene.
 - **Layout per format:** see `src/layout.tsx`. It holds the safe zones, the headline and visual zones, and the font sizes for 9:16 and 4:5.
-- **Brand colours:** see `src/brand.ts`. Background `#0B0B0F`, accent `#2F6BFF`, lime `#C8FF3D` (numbers only).
+- **Brand (Advantage kit):** colours and the logo gradient are in `src/brand.ts`: navy `#0C1B35`, teal `#1ECEA6` → blue `#2A6AFF` → purple `#9465D1` → pink `#F25FA7`. Numbers use the gradient. The logo files are in `public/brand/`, and the end-card copy and URL are in `timeline.ts → endCard`.
 
 ## Add music
 

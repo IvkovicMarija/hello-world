@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { drift, ease, pop } from "./anim";
-import { C, FONT } from "./brand";
+import { C, FONT, gradientText } from "./brand";
 import { rectStyle, useLayout } from "./layout";
 
 export const Background: React.FC = () => {
@@ -18,14 +18,25 @@ export const Background: React.FC = () => {
           opacity: 0.55,
         }}
       />
+      {/* brand-kit glows: blue top-right, purple bottom-right */}
       <div
         style={{
           position: "absolute",
-          width: width * 1.1,
-          height: width * 1.1,
-          left: width * 0.2 + drift(frame, 120, 9),
-          top: height * 0.15 + drift(frame, 90, 7, 1),
-          background: `radial-gradient(circle, ${C.accent}33 0%, transparent 65%)`,
+          width: width * 1.3,
+          height: width * 1.3,
+          left: width * 0.35 + drift(frame, 90, 9),
+          top: -width * 0.55 + drift(frame, 70, 7, 1),
+          background: `radial-gradient(circle, ${C.bgGlowBlue} 0%, transparent 62%)`,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          width: width * 1.2,
+          height: width * 1.2,
+          left: width * 0.45 + drift(frame, 80, 11, 2),
+          top: height - width * 0.6 + drift(frame, 60, 8, 3),
+          background: `radial-gradient(circle, ${C.bgGlowPurple} 0%, transparent 62%)`,
         }}
       />
     </AbsoluteFill>
@@ -138,12 +149,13 @@ export const CountUp: React.FC<{
         fontSize: size,
         lineHeight: 0.95,
         letterSpacing: -size * 0.04,
-        color: C.highlight,
+        ...gradientText,
+        alignSelf: "flex-start",
         fontVariantNumeric: "tabular-nums",
         opacity: appear,
         transform: `scale(${0.85 + 0.15 * appear + 0.04 * Math.sin(settle * Math.PI)})`,
         transformOrigin: "0% 70%",
-        textShadow: `0 0 ${40 * settle}px ${C.highlight}55`,
+        filter: `drop-shadow(0 0 ${30 * settle}px ${C.accent}88)`,
       }}
     >
       {v.toFixed(decimals)}%
