@@ -214,7 +214,45 @@ Swap these in for shot 1. Shots 2–8 stay the same. As the playbook says (p.34)
 | **H3** | **Loss aversion / wasted budget** ("I'm overpaying and don't know why") — "a truth they didn't want to say out loud" (p.33) | Marija looks at a phone, winces, then flips her eyes up to the lens. Palm wipe at the end. | `It's not your CPA. It's your ad set.` | "It's not your CPA. It's your ad set." |
 | **H4** | **Insider shortcut / FOMO** ("I want what the experts know") — "like it came from the comment section" (p.33) | Marija raises an eyebrow and holds up three fingers, then pushes her palm to the lens. | `The 3-asset rule nobody told you 👇` | "The three-asset rule nobody told you." |
 
-For each Veo hook prompt, copy the Shot 1 prompt and change only the action sentence and the `Audio:` line. Keep the CHARACTER / SET / LIGHT / LOOK / AVOID text word for word so the hook cuts cleanly into shot 2.
+Each prompt below is the Shot 1 prompt with only the action and `Audio:` lines changed. The CHARACTER / SET / LIGHT / LOOK / AVOID text is the same word for word, and every hook ends with the palm covering the lens so it match-cuts into shot 2.
+
+**Prompt — H2 Confession (0.0–2.0 → generate 4 s)**
+```
+Vertical 9:16 video, 4 seconds. Close-up of Marija, a confident woman in her early 30s with straight shoulder-length dark brown hair parted in the centre, light olive skin, natural minimal makeup, small gold hoop earrings, wearing a tailored black blazer over a crisp white crew-neck t-shirt. From the very first frame she leans in close to the lens, raises one hand beside her mouth as if sharing a secret, and half-whispers with a guilty little smile. At the end of the clip she pushes a flat open palm straight toward the camera until it fully covers the lens.
+Setting: minimalist creative studio, matte warm off-white wall, one green plant softly out of focus.
+Camera: locked-off close-up on a 35 mm lens look, slight drift-in as she leans forward, shallow depth of field around f/2.8, face centre-left with clear space above her head, nothing important near the right edge.
+Lighting: soft key light from camera-left through large diffusion, gentle fill, subtle warm rim light, 5600K, natural skin tones.
+Style: modern premium social-ad look, warm neutral grade, deep clean blacks, very light film grain.
+Audio: she half-whispers, intimate and slightly embarrassed: "Confession: I used to run one ad." Quiet room tone, a soft whoosh as the palm reaches the lens. No music.
+Avoid: distorted or extra fingers, warped hands, morphing face, any visible text, letters, numbers, subtitles, captions, logos, watermarks, UI overlays, extra people.
+```
+
+**Prompt — H3 Loss aversion (0.0–2.0 → generate 4 s)**
+```
+Vertical 9:16 video, 4 seconds. Close-up of Marija, a confident woman in her early 30s with straight shoulder-length dark brown hair parted in the centre, light olive skin, natural minimal makeup, small gold hoop earrings, wearing a tailored black blazer over a crisp white crew-neck t-shirt. In the first frame she is looking down at a black smartphone held low (screen not visible to camera) and winces; she immediately flicks her eyes up to the lens and speaks bluntly. At the end of the clip she pushes a flat open palm straight toward the camera until it fully covers the lens.
+Setting: minimalist creative studio, matte warm off-white wall, one green plant softly out of focus.
+Camera: locked-off close-up on a 35 mm lens look, fast subtle push-in on the eye-flick, shallow depth of field around f/2.8, face centre-left with clear space above her head, nothing important near the right edge.
+Lighting: soft key light from camera-left through large diffusion, gentle fill, subtle warm rim light, 5600K, natural skin tones.
+Style: modern premium social-ad look, warm neutral grade, deep clean blacks, very light film grain.
+Audio: she says, flat and blunt, like delivering bad news to a friend: "It's not your C-P-A. It's your ad set." Quiet room tone, a soft whoosh as the palm reaches the lens. No music.
+Avoid: visible phone screen, distorted or extra fingers, warped hands, morphing face, any visible text, letters, numbers, subtitles, captions, logos, watermarks, UI overlays, extra people.
+```
+
+**Prompt — H4 Insider shortcut (0.0–2.0 → generate 4 s)**
+```
+Vertical 9:16 video, 4 seconds. Close-up of Marija, a confident woman in her early 30s with straight shoulder-length dark brown hair parted in the centre, light olive skin, natural minimal makeup, small gold hoop earrings, wearing a tailored black blazer over a crisp white crew-neck t-shirt. From the very first frame she raises one eyebrow and holds up three fingers beside her face, speaking to the lens with a knowing look. At the end of the clip she pushes a flat open palm straight toward the camera until it fully covers the lens.
+Setting: minimalist creative studio, matte warm off-white wall, one green plant softly out of focus.
+Camera: locked-off close-up on a 35 mm lens look, fast subtle push-in, shallow depth of field around f/2.8, face centre-left with clear space above her head, raised hand kept away from the right edge.
+Lighting: soft key light from camera-left through large diffusion, gentle fill, subtle warm rim light, 5600K, natural skin tones.
+Style: modern premium social-ad look, warm neutral grade, deep clean blacks, very light film grain.
+Audio: she says, conspiratorial and confident: "The three-asset rule nobody told you." Quiet room tone, a soft whoosh as the palm reaches the lens. No music.
+Avoid: wrong number of fingers, distorted or extra fingers, warped hands, morphing face, any visible text, letters, numbers, subtitles, captions, logos, watermarks, UI overlays, extra people.
+```
+
+**A/B test notes**
+- Run the same Shots 2–8 under all four hooks (main, H2, H3, H4), so the hook is the only thing that changes.
+- H2 and H3 fit 7–8 words into about 2 s. If Veo rushes the line, let the hook run to 2.4 s and take the same amount off Shot 2, so the video stays 25.0 s.
+- Upload all four as separate ads in one ad set, next to the 4:5 video and the static image. Compare hook rate (3-second views ÷ impressions).
 
 ---
 
