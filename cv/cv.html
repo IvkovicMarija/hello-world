@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<title>CV – Ognjen Ivković</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --dark: #1c2430;
+    --accent: #c8102e;
+    --muted: #6b7380;
+    --line: #e3e6ea;
+  }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #2a2f36;
+    background: #fff;
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    display: grid;
+    grid-template-columns: 72mm 1fr;
+    overflow: hidden;
+  }
+  /* Sidebar */
+  aside {
+    background: var(--dark);
+    color: #e9ecf0;
+    padding: 18mm 9mm 12mm;
+  }
+  .photo {
+    width: 44mm;
+    height: 44mm;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 9mm;
+    border: 3px solid var(--accent);
+  }
+  .photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: translateY(-6%) scale(1.15);
+  }
+  aside h3 {
+    font-size: 10pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2mm;
+    margin: 7mm 0 3.5mm;
+  }
+  .contact div {
+    display: flex;
+    gap: 3mm;
+    align-items: flex-start;
+    margin-bottom: 2.5mm;
+    font-size: 9.5pt;
+    word-break: break-word;
+  }
+  .contact .ic {
+    flex: 0 0 5mm;
+    color: var(--accent);
+    font-weight: bold;
+  }
+  .skill { margin-bottom: 3mm; font-size: 9.5pt; }
+  .bar {
+    height: 1.6mm;
+    background: #3a4452;
+    border-radius: 1mm;
+    margin-top: 1mm;
+  }
+  .bar span {
+    display: block;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 1mm;
+  }
+  aside ul { list-style: none; font-size: 9.5pt; }
+  aside li { margin-bottom: 1.6mm; padding-left: 4mm; position: relative; }
+  aside li::before {
+    content: "";
+    position: absolute; left: 0; top: 2.2mm;
+    width: 1.6mm; height: 1.6mm;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  /* Main */
+  main { padding: 15mm 14mm 10mm 12mm; }
+  header h1 {
+    font-size: 28pt;
+    line-height: 1.05;
+    color: var(--dark);
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+  header h1 b { font-weight: 800; }
+  header .role {
+    margin-top: 2mm;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 10pt;
+  }
+  .summary {
+    margin-top: 5mm;
+    color: #444b55;
+    text-align: left;
+  }
+  section h2 {
+    font-size: 12.5pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--dark);
+    margin: 6mm 0 3mm;
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+  }
+  section h2::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+  section h2::before {
+    content: "";
+    width: 3mm; height: 3mm;
+    background: var(--accent);
+  }
+  .item { margin-bottom: 3mm; position: relative; }
+  .item .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4mm;
+  }
+  .item h4 { font-size: 11.5pt; color: var(--dark); }
+  .item .date {
+    font-size: 9pt;
+    color: #fff;
+    background: var(--dark);
+    padding: 0.5mm 2.5mm;
+    border-radius: 3mm;
+    white-space: nowrap;
+  }
+  .item .org {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 10pt;
+    margin: 0.5mm 0 2mm;
+  }
+  .item ul { padding-left: 5mm; }
+  .item li { margin-bottom: 0.6mm; }
+  .tags { display: flex; flex-wrap: wrap; gap: 2mm; }
+  .tags span {
+    border: 1px solid var(--line);
+    background: #f5f6f8;
+    padding: 0.7mm 2.6mm;
+    border-radius: 3mm;
+    font-size: 9.5pt;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <aside>
+    <div class="photo"><img src="foto.jpg" alt="Ognjen Ivković"></div>
+
+    <h3>Kontakt</h3>
+    <div class="contact">
+      <div><span class="ic">☎</span><span>064 063 6715</span></div>
+      <div><span class="ic">✉</span><span>ognjenivkovic1@gmail.com</span></div>
+      <div><span class="ic">⌂</span><span>Mije Stanimirovića 30a<br>19000 Zaječar</span></div>
+    </div>
+
+    <h3>Veštine</h3>
+    <div class="skill">MS Office (Word, Excel)<div class="bar"><span style="width:90%"></span></div></div>
+    <div class="skill">Administracija i dokumentacija<div class="bar"><span style="width:90%"></span></div></div>
+    <div class="skill">Rad na računaru i hardver<div class="bar"><span style="width:85%"></span></div></div>
+    <div class="skill">Organizacija događaja<div class="bar"><span style="width:80%"></span></div></div>
+    <div class="skill">Osnove računarskih mreža<div class="bar"><span style="width:70%"></span></div></div>
+
+    <h3>Jezici</h3>
+    <div class="skill">Srpski – maternji<div class="bar"><span style="width:100%"></span></div></div>
+    <div class="skill">Engleski<div class="bar"><span style="width:75%"></span></div></div>
+
+    <h3>Lične osobine</h3>
+    <ul>
+      <li>Odgovornost i pouzdanost</li>
+      <li>Preciznost i organizovanost</li>
+      <li>Rad pod pritiskom</li>
+      <li>Timski duh</li>
+      <li>Brzo učenje</li>
+    </ul>
+  </aside>
+
+  <main>
+    <header>
+      <h1>Ognjen<br><b>Ivković</b></h1>
+      <div class="role">Administrativni sekretar · Elektrotehničar računara</div>
+    </header>
+
+    <p class="summary">
+      Organizovan i odgovoran mladi profesionalac sa iskustvom u administraciji sportskog kluba
+      i organizaciji auto-moto takmičenja. Tehničko obrazovanje iz oblasti računara omogućava mi
+      brzo snalaženje sa digitalnim alatima i dokumentacijom. Navikao sam na dinamično okruženje,
+      rokove i rad sa ljudima, a težim stalnom učenju i profesionalnom razvoju.
+    </p>
+
+    <section>
+      <h2>Radno iskustvo</h2>
+      <div class="item">
+        <div class="top">
+          <h4>Sekretar kluba</h4>
+          <span class="date">Jul 2023 – danas</span>
+        </div>
+        <div class="org">ASK „Gaga Avala Racing Team“ i ASU „AS Zaječar“</div>
+        <ul>
+          <li>Učešće u organizaciji i realizaciji auto-trka – logistika, prijave takmičara i podrška tokom događaja.</li>
+          <li>Priprema i obrada sportske dokumentacije (licence, prijave, pravilnici) u saradnji sa nacionalnim savezom.</li>
+          <li>Vođenje administrativne dokumentacije kluba, dopisa, zapisnika i arhive.</li>
+          <li>Komunikacija i koordinacija sa takmičarima, članovima kluba i partnerima.</li>
+          <li>Vođenje evidencije članstva, takmičenja i rezultata.</li>
+          <li>Saradnja sa knjigovodstvom – priprema i dostavljanje finansijske dokumentacije.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Obrazovanje</h2>
+      <div class="item">
+        <div class="top">
+          <h4>Elektrotehničar računara</h4>
+          <span class="date">Sep 2019 – Jun 2023</span>
+        </div>
+        <div class="org">Tehnička škola, Zaječar</div>
+        <ul>
+          <li>Hardver, softver i održavanje računarskih sistema.</li>
+          <li>Osnove programiranja, računarskih mreža i elektronike.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Kompetencije</h2>
+      <div class="tags">
+        <span>Administrativno poslovanje</span>
+        <span>Vođenje evidencija</span>
+        <span>Poslovna komunikacija</span>
+        <span>Organizacija događaja</span>
+        <span>Rad sa dokumentacijom</span>
+        <span>Saradnja sa knjigovodstvom</span>
+        <span>Timski rad</span>
+        <span>Rešavanje problema</span>
+        <span>Upravljanje vremenom</span>
+        <span>Instalacija i održavanje računara</span>
+        <span>Internet i e-pošta</span>
+        <span>Pravilnici auto-sporta</span>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>
