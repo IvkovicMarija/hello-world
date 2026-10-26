@@ -4,12 +4,19 @@ Pokretanje:  python3 build.py   ->  cv-admin.html, cv-it.html
 PDF:         node render.js     ->  CV_Ognjen_Ivkovic_Administracija.pdf, CV_Ognjen_Ivkovic_IT.pdf
 """
 
-CONTACT = """
+ICON = '<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{}</svg>'
+ICONS = {
+    "phone": '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
+    "mail": '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
+    "home": '<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+}
+
+CONTACT = f"""
     <h3>Kontakt</h3>
     <div class="contact">
-      <div><span class="ic">☎</span><span>064 063 6715</span></div>
-      <div><span class="ic">✉</span><span>ognjenivkovic1@gmail.com</span></div>
-      <div><span class="ic">⌂</span><span>Mije Stanimirovića 30a<br>19000 Zaječar</span></div>
+      <div>{ICON.format(ICONS["phone"])}<span>064 063 6715</span></div>
+      <div>{ICON.format(ICONS["mail"])}<span>ognjenivkovic1@gmail.com</span></div>
+      <div>{ICON.format(ICONS["home"])}<span>Mije Stanimirovića 30a<br>19000 Zaječar</span></div>
     </div>"""
 
 LANGUAGES = """

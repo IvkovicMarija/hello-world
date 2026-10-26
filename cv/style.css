@@ -58,9 +58,11 @@ aside h3 {
   word-break: break-word;
 }
 .contact .ic {
-  flex: 0 0 5mm;
+  flex: 0 0 4.2mm;
+  width: 4.2mm;
+  height: 4.2mm;
+  margin-top: 0.3mm;
   color: var(--accent);
-  font-weight: bold;
 }
 .tool { margin-bottom: 2.6mm; font-size: 9.5pt; }
 .tool b { display: block; color: #fff; }
