@@ -77,12 +77,12 @@ export const AWhatIs: React.FC = () => {
       <TextZone>
         <Kicker text={S.kicker} />
         <Swap
-          at={1.9}
+          at={2.8}
           a={<Words words={S.line1.split(" ")} at={0.1} stagger={0.1} size={L.head} />}
           b={
             <Words
               words={S.line2.split(" ").map((t) => ({ t, color: t === "shot." ? C.teal : C.text }))}
-              at={1.9}
+              at={2.8}
               stagger={0.08}
               size={L.head}
             />
@@ -201,7 +201,7 @@ export const ABefore: React.FC = () => {
 };
 
 // ---------------------------------------------------------------- 4. now
-const NOW_NUMBER_AT = 1.6;
+const NOW_NUMBER_AT = 2.4;
 
 export const ANow: React.FC = () => {
   const frame = useCurrentFrame();
@@ -262,7 +262,7 @@ export const ANow: React.FC = () => {
 
 // ---------------------------------------------------------------- 5. matches
 const LINKED = [0, 9, 13, 18, 22, 26, 31, 36, 41, 47];
-const MATCH_NUMBER_AT = 1.9;
+const MATCH_NUMBER_AT = 2.8;
 
 export const AMatches: React.FC = () => {
   const frame = useCurrentFrame();
