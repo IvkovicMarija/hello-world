@@ -24,7 +24,7 @@ const serveUrl = await bundle({ entryPoint: path.resolve("src/index.ts") });
 const inputProps = { showSafeZone: debug };
 const composition = await selectComposition({ serveUrl, id: compId, inputProps, browserExecutable });
 for (const [name, s] of list) {
-  const output = path.join(outDir, `${compId === "MetaPlaybook4x5" ? "4x5_" : ""}${name}.png`);
+  const output = path.join(outDir, `${compId.endsWith("4x5") ? "4x5_" : ""}${name}.png`);
   await renderStill({ composition, serveUrl, output, frame: Math.round(s * 30), inputProps, browserExecutable });
   console.log(output);
 }

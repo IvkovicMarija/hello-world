@@ -73,12 +73,7 @@ export const SCENES = {
   endCard: {
     start: 23,
     end: 25,
-    // Images live in public/brand/.
-    avatar: "brand/marija-avatar.png",
-    logoMark: "brand/advantage-mark.png", // the Advantage "A"
-    name: "Marija Ivković",
-    tagline: "Meta creative that converts",
-    linkedin: "linkedin.com/in/marija-ivkovic", // https://www.linkedin.com/in/marija-ivkovic
+    // Name, photo, tagline and LinkedIn live in PROFILE (src/brand.ts), shared by every video.
     source: "Source: Meta Creative Shop, Creative on Meta playbook",
   },
 } as const;

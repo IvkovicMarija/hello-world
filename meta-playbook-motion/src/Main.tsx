@@ -20,7 +20,7 @@ const COMPONENTS: Record<SceneKey, React.FC> = {
   stat2: Stat2,
   stat3: Stat3,
   takeaway: Takeaway,
-  endCard: EndCard,
+  endCard: () => <EndCard source={SCENES.endCard.source} />,
 };
 
 export type MainProps = { showSafeZone: boolean };

@@ -14,6 +14,15 @@ for (const [weight, name] of WEIGHTS) {
   loadFont({ family: FONT, url: staticFile(`fonts/Inter-${name}.otf`), weight, format: "opentype" });
 }
 
+// Closing-frame identity, shared by every video. Images live in public/brand/.
+export const PROFILE = {
+  avatar: "brand/marija-avatar.png",
+  logoMark: "brand/advantage-mark.png", // the Advantage "A"
+  name: "Marija Ivković",
+  tagline: "Meta creative that converts",
+  linkedin: "linkedin.com/in/marija-ivkovic", // https://www.linkedin.com/in/marija-ivkovic
+} as const;
+
 // Advantage brand kit (sampled from the logo files in public/brand/).
 export const C = {
   bg: "#0C1B35", // navy

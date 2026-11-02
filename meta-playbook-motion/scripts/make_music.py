@@ -4,20 +4,33 @@ Royalty-free by construction: every sound here is generated from scratch with nu
 120 BPM, so every scene cut (2, 6, 10, 14, 18, 21, 23 s) lands on a beat.
 Usage: python3 scripts/make_music.py
 """
+import argparse
 import wave
 
 import numpy as np
 
+ap = argparse.ArgumentParser()
+ap.add_argument("--dur", type=float, default=25.0)
+ap.add_argument("--cuts", default="2,6,10,14,18,21,23", help="scene cut times (s)")
+ap.add_argument("--countups", default="11.6-12.8,15.7-16.9,19.35-20.25")
+ap.add_argument("--drop", type=float, default=10.0, help="big hit after the first riser")
+ap.add_argument("--end", type=float, default=23.0, help="end-card start: beat stops, chord rings")
+ap.add_argument("--shake", type=float, default=0.98, help="hook accent hit (s); <0 to skip")
+ap.add_argument("--out", default="public/music.wav")
+ARGS = ap.parse_args()
+
 SR = 48000
-DUR = 25.0
+DUR = ARGS.dur
+END = ARGS.end
+DROP = ARGS.drop
 BPM = 120
 BEAT = 60 / BPM
 N = int(SR * DUR)
 rng = np.random.default_rng(7)
 
 # scene boundaries (seconds) and count-up windows, mirrored from src/timeline.ts + scene constants
-CUTS = [2, 6, 10, 14, 18, 21, 23]
-COUNTUPS = [(11.6, 12.8), (15.7, 16.9), (19.35, 20.25)]
+CUTS = [float(c) for c in ARGS.cuts.split(",")]
+COUNTUPS = [tuple(map(float, w.split("-"))) for w in ARGS.countups.split(",") if w]
 
 L = np.zeros(N)
 R = np.zeros(N)
@@ -112,7 +125,7 @@ side = np.ones(N)  # sidechain envelope from the kick
 
 for b in range(beats):
     at = b * BEAT
-    if at >= 23.0:  # end card: beat drops out, chord rings
+    if at >= END:  # end card: beat drops out, chord rings
         break
     add(kick_s, at, 0.95)
     d = t_arr(0.35)
@@ -129,32 +142,32 @@ for b in range(beats):
         add(hat_o, at + BEAT / 2, 0.16, pan=0.2)
 
 # snare roll building into the end card
-for i, at in enumerate(np.arange(21.5, 23.0, BEAT / 4)):
+for i, at in enumerate(np.arange(END - 1.5, END, BEAT / 4)):
     add(clap_s, at, 0.12 + 0.25 * i / 12)
 
 bass = np.zeros(N)
 pad = np.zeros(N)
 arp = np.zeros(N)
-for bar in range(13):
+for bar in range(int(DUR / 2) + 1):
     at = bar * 2.0
     ci = bar % 4
     # bass: off-beat eighths
     for e in range(8):
         st = at + e * BEAT / 2
-        if st >= 23.0 or e % 2 == 0:
+        if st >= END or e % 2 == 0:
             continue
         t = t_arr(BEAT / 2 * 0.9)
         sig = saw(note(ROOTS[ci]), t, 8) * np.minimum(1, t * 200) * np.exp(-t * 4)
         s = int(st * SR)
         bass[s : s + len(t)] += sig[: max(0, N - s)]
     # pad: whole bar, detuned
-    t = t_arr(2.0 if at < 22 else 3.0)
+    t = t_arr(2.0 if at < END - 1 else 3.0)
     sig = sum(saw(note(m) * dt, t, 6) for m in CHORDS[ci] for dt in (0.997, 1.003))
     env = np.minimum(1, t * 3) * np.minimum(1, (len(t) / SR - t) * 4)
     s = int(at * SR)
     pad[s : s + len(t)] += (sig * env)[: max(0, N - s)]
     # arp: 16ths from the idea scene on
-    if 6 <= at < 22:
+    if 6 <= at < END - 1:
         seq = CHORDS[ci] + [CHORDS[ci][0] + 12]
         for k in range(16):
             st = at + k * BEAT / 4
@@ -177,11 +190,12 @@ R += bass * 0.38 + pad * 0.09 * dark + arp * 0.10
 
 # ---------- hits, risers, ticks ----------
 add(impact(1.0), 0.0, 0.55)  # frame-1 hook hit
-add(impact(0.5), 0.98, 0.28)  # screen shake on "set"
+if ARGS.shake >= 0:
+    add(impact(0.5), ARGS.shake, 0.28)  # screen shake on "set"
 for c in CUTS:
-    add(impact(1.3 if c in (10, 23) else 0.6), c, 0.5 if c in (10, 23) else 0.3)
-add(riser(1.5), 8.5, 0.35)  # into the match cut / stat 1
-add(riser(2.0), 21.0, 0.3)  # into the end card
+    add(impact(1.3 if c in (DROP, END) else 0.6), c, 0.5 if c in (DROP, END) else 0.3)
+add(riser(1.5), DROP - 1.5, 0.35)  # into the match cut / stat 1
+add(riser(2.0), END - 2.0, 0.3)  # into the end card
 for a, b in COUNTUPS:  # count-up ticks, accelerating
     ts = a + (b - a) * (np.linspace(0, 1, 14) ** 0.6)
     for x in ts:
@@ -190,21 +204,21 @@ for a, b in COUNTUPS:  # count-up ticks, accelerating
 # final chord tail on the end card
 t = t_arr(2.0)
 tail = sum(np.sin(2 * np.pi * note(m) * t) for m in [57, 60, 64, 69]) * np.exp(-t * 1.2) * np.minimum(1, t * 30)
-add(tail, 23.0, 0.12, pan=-0.1)
-add(tail, 23.0, 0.12, pan=0.1)
+add(tail, END, 0.12, pan=-0.1)
+add(tail, END, 0.12, pan=0.1)
 
 # ---------- master ----------
 fade = np.ones(N)
-fs = int(24.4 * SR)
+fs = int((DUR - 0.6) * SR)
 fade[fs:] = np.linspace(1, 0, N - fs) ** 2
 fade[: int(0.004 * SR)] = np.linspace(0, 1, int(0.004 * SR))
 mix = np.stack([L, R], 1) * fade[:, None]
 mix = np.tanh(mix * 1.1) / np.tanh(1.1)  # gentle soft clip
 mix /= np.max(np.abs(mix)) / 0.89
 
-with wave.open("public/music.wav", "w") as w:
+with wave.open(ARGS.out, "w") as w:
     w.setnchannels(2)
     w.setsampwidth(2)
     w.setframerate(SR)
     w.writeframes((mix * 32767).astype("<i2").tobytes())
-print("wrote public/music.wav", mix.shape[0] / SR, "s")
+print("wrote", ARGS.out, mix.shape[0] / SR, "s")

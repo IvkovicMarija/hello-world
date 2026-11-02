@@ -1,11 +1,9 @@
 import React from "react";
 import { AbsoluteFill, Img, staticFile, useCurrentFrame } from "remotion";
 import { drift, ease, pop } from "../anim";
-import { C, FONT, gradientText } from "../brand";
+import { C, FONT, PROFILE, gradientText } from "../brand";
 import { useLayout } from "../layout";
-import { SCENES } from "../timeline";
 
-const S = SCENES.endCard;
 const MARK_RATIO = 866 / 862; // h / w of advantage-mark.png
 
 const LinkedInIcon: React.FC<{ size: number }> = ({ size }) => (
@@ -20,7 +18,7 @@ const LinkedInIcon: React.FC<{ size: number }> = ({ size }) => (
   </svg>
 );
 
-export const EndCard: React.FC = () => {
+export const EndCard: React.FC<{ source: string }> = ({ source }) => {
   const frame = useCurrentFrame();
   const L = useLayout();
   const avatar = pop(frame, 0, 15);
@@ -62,7 +60,7 @@ export const EndCard: React.FC = () => {
             transform: `scale(${(0.85 + 0.15 * avatar) * breathe}) translateY(${drift(frame, 3, 2)}px)`,
           }}
         >
-          <Img src={staticFile(S.avatar)} style={{ width: avatarSize, height: avatarSize }} />
+          <Img src={staticFile(PROFILE.avatar)} style={{ width: avatarSize, height: avatarSize }} />
           <div
             style={{
               position: "absolute",
@@ -80,7 +78,7 @@ export const EndCard: React.FC = () => {
               transform: `scale(${0.4 + 0.6 * markP}) rotate(${(1 - markP) * -40}deg)`,
             }}
           >
-            <Img src={staticFile(S.logoMark)} style={{ width: markW, height: markW * MARK_RATIO }} />
+            <Img src={staticFile(PROFILE.logoMark)} style={{ width: markW, height: markW * MARK_RATIO }} />
           </div>
         </div>
 
@@ -95,7 +93,7 @@ export const EndCard: React.FC = () => {
             transform: `translateY(${(1 - name) * 30}px)`,
           }}
         >
-          {S.name}
+          {PROFILE.name}
         </div>
         <div
           style={{
@@ -107,7 +105,7 @@ export const EndCard: React.FC = () => {
             transform: `translateY(${(1 - tag) * 24}px)`,
           }}
         >
-          {S.tagline}
+          {PROFILE.tagline}
         </div>
 
         <div style={{ flex: 1 }} />
@@ -130,10 +128,10 @@ export const EndCard: React.FC = () => {
           }}
         >
           <LinkedInIcon size={48} />
-          {S.linkedin}
+          {PROFILE.linkedin}
         </div>
         <div style={{ fontWeight: 500, fontSize: 26, color: C.muted, marginTop: 26, opacity: src }}>
-          {S.source}
+          {source}
         </div>
       </div>
     </AbsoluteFill>

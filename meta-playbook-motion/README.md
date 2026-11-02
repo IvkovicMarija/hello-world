@@ -1,4 +1,4 @@
-# Meta playbook — 25s motion graphic
+# Meta motion graphics: Playbook (25s) + Andromeda (30s)
 
 A 25-second motion-graphics explainer of Meta's *Creative on Meta* playbook (creative diversification), built with Remotion (React + TypeScript). It has no footage and no AI video: everything is type, shapes, icons and charts.
 
@@ -62,3 +62,25 @@ The project uses Inter (SIL Open Font License), bundled in `public/fonts/` and l
 ## Source
 
 All stats are from *Creative on Meta* (Meta Creative Shop): 34.5% (p.14), 9.1% (p.10), 7% (p.11).
+
+## Second video: Meta Andromeda explainer (30 s)
+
+This is a 30-second explainer of Meta's Oct 28, 2026 engineering post on Andromeda, the ads retrieval engine. It uses the same brand kit, components and closing frame as the playbook video.
+
+| Output | Size |
+|---|---|
+| `out/andromeda/meta-andromeda-30s.mp4` | 9:16, 1080×1920, 30 fps, 30.0 s |
+| `out/andromeda/meta-andromeda-30s_4x5.mp4` | 4:5, 1080×1350, 30 fps, 30.0 s |
+| `out/andromeda/thumbnail.png` | 4:5, the "1,000,000,000+ ads per second" frame |
+| `out/andromeda/stills/*.png` | one 9:16 still per scene |
+
+- **Copy and timing:** `src/andromeda/timeline.ts`. The scenes are in `src/andromeda/scenes.tsx`, and the shared ad-pool grid and icons are in `src/andromeda/parts.tsx`.
+- **Sources:** every on-screen claim is mapped to Meta's exact sentence in `andromeda-sources.md`.
+- **Closing frame:** shared with the playbook video. Edit `PROFILE` in `src/brand.ts` and both videos update.
+- **Music:** `public/andromeda-music.wav`. The command that regenerates it is in the comment at the top of `src/andromeda/timeline.ts`.
+
+```bash
+npx remotion render Andromeda9x16 out/andromeda/meta-andromeda-30s.mp4
+npx remotion render Andromeda4x5  out/andromeda/meta-andromeda-30s_4x5.mp4
+./scripts/finalize.sh 30 out/andromeda/meta-andromeda-30s.mp4 out/andromeda/meta-andromeda-30s_4x5.mp4
+```

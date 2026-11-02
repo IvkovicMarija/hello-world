@@ -3,9 +3,13 @@ import { Composition } from "remotion";
 import { LAYOUTS } from "./layout";
 import { Main, MainProps } from "./Main";
 import { DEBUG_SAFE_ZONE, FPS, TOTAL_FRAMES } from "./timeline";
+import { AndromedaMain } from "./andromeda/Main";
+import { TOTAL_SECONDS as ANDROMEDA_SECONDS } from "./andromeda/timeline";
 
 const Reels: React.FC<MainProps> = (p) => <Main {...p} layout={LAYOUTS["9x16"]} />;
 const Feed: React.FC<MainProps> = (p) => <Main {...p} layout={LAYOUTS["4x5"]} />;
+const AndromedaReels: React.FC<MainProps> = (p) => <AndromedaMain {...p} layout={LAYOUTS["9x16"]} />;
+const AndromedaFeed: React.FC<MainProps> = (p) => <AndromedaMain {...p} layout={LAYOUTS["4x5"]} />;
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -22,6 +26,24 @@ export const RemotionRoot: React.FC = () => (
       id="MetaPlaybook4x5"
       component={Feed}
       durationInFrames={TOTAL_FRAMES}
+      fps={FPS}
+      width={LAYOUTS["4x5"].width}
+      height={LAYOUTS["4x5"].height}
+      defaultProps={{ showSafeZone: DEBUG_SAFE_ZONE }}
+    />
+    <Composition
+      id="Andromeda9x16"
+      component={AndromedaReels}
+      durationInFrames={ANDROMEDA_SECONDS * FPS}
+      fps={FPS}
+      width={LAYOUTS["9x16"].width}
+      height={LAYOUTS["9x16"].height}
+      defaultProps={{ showSafeZone: DEBUG_SAFE_ZONE }}
+    />
+    <Composition
+      id="Andromeda4x5"
+      component={AndromedaFeed}
+      durationInFrames={ANDROMEDA_SECONDS * FPS}
       fps={FPS}
       width={LAYOUTS["4x5"].width}
       height={LAYOUTS["4x5"].height}
